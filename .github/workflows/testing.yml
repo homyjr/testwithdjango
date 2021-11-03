@@ -30,4 +30,5 @@ jobs:
         pip install -r requirements.txt
     - name: Django Testing
       run: |
+        cd core
         python3 manage.py test
