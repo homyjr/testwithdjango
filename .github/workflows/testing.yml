@@ -1,23 +1,30 @@
 name: Django Tests
+
 on:
   push:
     branches:
-      -main
-      
+      - main
+  
   pull_request:
     branches:
       - main
-      
+
+# on:
+#   schedule:
+#     - cron:  '*/15 * * * *'
+
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Pyton 3.7
+    - name: Set up Python 3.7
       uses: actions/setup-python@v2
       with:
         python-version: 3.7
-    - name: Install dependences
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
@@ -33,6 +40,3 @@ jobs:
     - name: Django Testing
       run: |
         python3 manage.py test
-        
-        
-      
